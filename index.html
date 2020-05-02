@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Clock</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="header">
+      <h1 class="header-header-text">Pomodoro Clock</h1>
+      <p class="header-text" text>Designed by Chiam Min</p>
+    </div>
+
+    <div id="addTask">
+      <input
+        class="task-description"
+        type="text"
+        placeholder="Task Description"
+      />
+      <button id="button-plus"><i class="fas fa-plus"></i></button>
+    </div>
+
+    <div id="clock-container">
+      <div id="clock-header">
+        <button id="clock-reset"><i class="material-icons">&#xe5d5;</i></button>
+      </div>
+      <div id="clock-timer"></div>
+      <div id="clock-actions">
+        <button id="clock-start">Start</button>
+        <button id="clock-pause">Pause</button>
+        <button id="clock-stop">Stop</button>
+      </div>
+    </div>
+
+    <div id="taskList">
+      <h1>To Do List</h1>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serifs;
+}
+
+#header,
+#addTask {
+  text-align: center;
+}
+
+.header-header-text {
+  font-size: 60px;
+  padding: 35px 0px 10px 0;
+}
+
+.header-text {
+  font-size: 18px;
+  padding-bottom: 30px;
+}
+
+.task-description {
+  height: 35px;
+  width: 500px;
+  font-size: 18px;
+  padding-left: 10px;
+  margin-bottom: 45px;
+}
+
+::placeholder {
+  opacity: 0.6;
+}
+
+#button-plus {
+  font-size: 15px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: lightgreen;
+}
+
+#clock-container {
+  height: 300px;
+  width: 550px;
+  background-color: teal;
+  margin: auto;
+  border-radius: 0.5em;
+}
+
+#clock-header {
+  height: 40px;
+}
+
+#clock-reset {
+  border-radius: 0.5em;
+  height: 30px;
+  width: 30px;
+  float: right;
+  margin: 10px;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
