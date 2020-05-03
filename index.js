@@ -1,8 +1,42 @@
 //Select Elements
 const $list = document.getElementById("list");
 const $inputTask = document.getElementById("inputTask");
+const $form = document.getElementById("form");
+const $submit = document.getElementById("submit");
+const $alert = document.getElementById("alert");
 
-//Add TO Do Function
+loadEventListeners();
+
+function loadEventListeners() {
+  form.addEventListener("submit", addToDo);
+}
+
+function addToDo(e) {
+  const text = $inputTask.value;
+
+  if (text === "") {
+    showAlert();
+  } else {
+    const li = document.createElement("li"); //creates list
+    li.className = "item";
+    li.textContent = text;
+    console.log(li);
+    list.appendChild(li);
+    $inputTask.value = "";
+  }
+
+  e.preventDefault();
+}
+
+function showAlert() {
+  $alert.style.display = "block";
+  setTimeout(() => {
+    $alert.style.display = "none";
+  }, 2000);
+}
+
+/*
+//Add To Do Function
 function addToDo(toDO) {
   const item = `
                 <li class="item">
@@ -16,21 +50,16 @@ function addToDo(toDO) {
   $list.insertAdjacentHTML(position, item);
 }
 
-addToDo("Do Job");
-
 /*
-//allows user to key in value using Enter key
-document.addEventListener("keyup", function(event)){
-if (event.keyCode == 13) {
-    const toDO = $inputTask.value;
+//Add item to list when user hits Enter key
+document.addEventListener("keyup", function(event){
+    if (event.keyCode == 13){
+        const toDO = $inputTask.value;
 
-    //check if the input is empty or not
-    if(toDO){
-        addToDo(toDo);
-    }
-    $inputTask.value = "";
-}
+        //check if input isnt empty
+        if (toDO){
+            addToDo(toDO);
+        }
+        $inputTask.value = "";
 
-
-}
-*/
+    }*/
