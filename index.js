@@ -4,34 +4,58 @@ const $inputTask = document.getElementById("inputTask");
 const $form = document.getElementById("form");
 const $submit = document.getElementById("submit");
 const $alert = document.getElementById("alert");
+const $removeBtn = document.getElementById("button-remove");
+const $editBtn = document.getElementById("button-edit");
 
 loadEventListeners();
 
 function loadEventListeners() {
-  form.addEventListener("submit", addToDo);
+  $form.addEventListener("submit", addToDo);
 }
 
+let id = 1;
+
 function addToDo(e) {
+  e.preventDefault();
+
   const text = $inputTask.value;
 
   if (text === "") {
     showAlert();
+    return false;
   } else {
     const li = document.createElement("li"); //creates list
-    li.className = "item";
-    li.textContent = text;
-    console.log(li);
-    list.appendChild(li);
-    $inputTask.value = "";
-  }
 
-  e.preventDefault();
+    li.classList.add("item");
+    //li.innerHTML = `<li>${$inputTask.value}</li>`;
+    li.innerHTML = `
+    <p class="text">${text}</p>
+    <span id="button-edit-${id}" class="material-icons">edit</>
+    <span id="button-remove-${id}">
+      <i class="material-icons">remove_circle</i>
+    </span>
+    `;
+    console.log(li);
+    $list.appendChild(li);
+    $inputTask.value = "";
+
+    const $removeBtn = document.getElementById(`button-remove-${id}`);
+    $removeBtn.addEventListener("click", function (e) {
+      const confirm = window.confirm("Are you sure?");
+
+      if (confirm) {
+        li.remove();
+      }
+    });
+  }
+  id++;
 }
 
 function showAlert() {
-  $alert.style.display = "block";
+  console.log("alert");
+  $alert.style.visibility = "visible";
   setTimeout(() => {
-    $alert.style.display = "none";
+    $alert.style.visibility = "hidden";
   }, 2000);
 }
 
@@ -50,7 +74,6 @@ function addToDo(toDO) {
   $list.insertAdjacentHTML(position, item);
 }
 
-/*
 //Add item to list when user hits Enter key
 document.addEventListener("keyup", function(event){
     if (event.keyCode == 13){

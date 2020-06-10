@@ -28,11 +28,24 @@
         class="task-description"
         type="text"
         placeholder="Task Description"
+        autocomplete="off"
       />
       <button id="submit"><i class="fas fa-plus"></i></button>
     </form>
 
     <div id="clock-container">
+      <div id="session">
+        <button>-</button>
+        <p>Session Length</p>
+        <button>+</button>
+      </div>
+
+      <div id="break">
+        <button>-</button>
+        <p>Break Length</p>
+        <button>+</button>
+      </div>
+
       <div id="clock-header">
         <i id="clock-reset" class="material-icons">&#xe5d5;</i>
       </div>
@@ -51,17 +64,18 @@
 
       <div id="taskList">
         <ul id="list">
-          <!--
-          <li class="item">
+          <!-- <li class="item">
             <p class="text">Complete Pomodoro Clock</p>
-            <button id="button-remove">
+            <span id="button-edit" class="material-icons">edit</span>
+            <span id="button-remove">
               <i class="material-icons">remove_circle</i>
-            </button> 
-          </li>
-        --></ul>
+            </span>
+            <span id="button-edit" class="material-icons">edit</span>
+          </li> -->
+        </ul>
       </div>
     </div>
 
-    <script type="text/javascript" src="index.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
