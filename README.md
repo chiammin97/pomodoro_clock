@@ -1,7 +1,7 @@
 # Pomodoro Clock
 
 - [ ] User can add/edit task
-- [ x ] User can see task list
+- [x] User can see task list
 - [ ] User can start/pause, stop and reset clock
 - [ ] User can customise break/session timing
       <br>
