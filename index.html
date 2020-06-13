@@ -34,26 +34,43 @@
     </form>
 
     <div id="clock-container">
-      <div id="session">
-        <button>-</button>
-        <p>Session Length</p>
-        <button>+</button>
-      </div>
+      <div id="clock-padding">
+        <div id="settings">
+          <div id="session">
+            <div id="sessionContent">
+              <p id="sessionText">Session</p>
+              <div id="sessionSetting">
+                <button id="sessionMinus">-</button>
+                <p id="sessionTime">25</p>
+                <button id="sessionPlus">+</button>
+              </div>
+            </div>
+          </div>
 
-      <div id="break">
-        <button>-</button>
-        <p>Break Length</p>
-        <button>+</button>
-      </div>
+          <div id="break">
+            <div id="breakContent">
+              <p id="breakText">Break</p>
+              <button id="breakMinus">-</button>
+              <p id="breakTime">5</p>
+              <button id="breakPlus">+</button>
+            </div>
+          </div>
+        </div>
 
-      <div id="clock-header">
-        <i id="clock-reset" class="material-icons">&#xe5d5;</i>
-      </div>
-      <div id="clock-timer"></div>
-      <div id="clock-actions">
-        <button id="clock-start">Start</button>
-        <button id="clock-pause">Pause</button>
-        <button id="clock-stop">Stop</button>
+        <div id="clockTimer">
+          <div id="clockNumber">
+            <h1 id="clockValue">
+              <span id="minutes">25</span> :
+              <span id="seconds">00</span>
+            </h1>
+          </div>
+          <div id="clock-actions">
+            <button id="clock-start">Start</button>
+            <button id="clock-pause">Pause</button>
+            <button id="clock-stop">Stop</button>
+            <button id="clock-reset">Reset</button>
+          </div>
+        </div>
       </div>
     </div>
 

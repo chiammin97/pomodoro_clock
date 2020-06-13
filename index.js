@@ -58,31 +58,3 @@ function showAlert() {
     $alert.style.visibility = "hidden";
   }, 2000);
 }
-
-/*
-//Add To Do Function
-function addToDo(toDO) {
-  const item = `
-                <li class="item">
-                <p class="text">${toDO}</p>
-                <button id="button-remove"><i class="material-icons">remove</i>
-                </button> 
-                </li>
-                `;
-  const position = "beforeend";
-
-  $list.insertAdjacentHTML(position, item);
-}
-
-//Add item to list when user hits Enter key
-document.addEventListener("keyup", function(event){
-    if (event.keyCode == 13){
-        const toDO = $inputTask.value;
-
-        //check if input isnt empty
-        if (toDO){
-            addToDo(toDO);
-        }
-        $inputTask.value = "";
-
-    }*/

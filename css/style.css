@@ -15,7 +15,7 @@ body {
 
 .header-text {
   font-size: 18px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   color: #515052;
   font-style: italic;
   opacity: 0.7;
@@ -33,7 +33,7 @@ body {
   border-radius: 0.1em;
   line-height: 35px;
   color: #fff;
-  display: none;
+  visibility: hidden;
 }
 
 .task-description {
@@ -44,7 +44,7 @@ body {
   margin-bottom: 30px;
 }
 
-::placeholder {
+.task-description::placeholder {
   opacity: 0.6;
 }
 
@@ -55,9 +55,11 @@ body {
   border-radius: 50%;
   background-color: #94db8a;
   color: #fff;
+  cursor: pointer;
+  border: none;
 }
 
-#button-add:hover {
+#submit:hover {
   background-color: #a0e996;
   transition: 0.3s;
 }
@@ -68,23 +70,62 @@ body {
   background-color: #f7f0ea;
   margin: auto;
   border-radius: 0.5em;
-  margin-bottom: 30px;
 }
 
-#clock-header {
-  height: 40px;
+#clock-padding {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#clock-reset {
-  font-size: 30px;
-  float: right;
-  margin: 15px;
+#settings {
+  display: flex;
+  justify-content: center;
+  color: #515052;
+  font-size: 20px;
+}
+
+#session,
+#break {
+  display: inline-block;
+  text-align: center;
+  padding: 0 30px;
+}
+
+#sessionContent,
+#breakContent {
+  display: block;
+}
+
+#sessionMinus,
+#sessionTime,
+#sessionPlus,
+#breakMinus,
+#breakTime,
+#breakPlus {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+#sessionMinus,
+#sessionPlus,
+#breakMinus,
+#breakPlus {
+  width: 25px;
+  height: 25px;
+  padding: 2px;
+}
+
+#sessionText,
+#breakText {
+  font-weight: bold;
 }
 
 #taskList-container {
   width: 550px;
-  margin: auto;
-  margin-bottom: 50px;
+  margin: 50px auto;
 }
 
 #taskList-header {
@@ -94,6 +135,26 @@ body {
   width: 550px;
   margin-bottom: 10px;
   color: #515052;
+}
+
+#clockTimer {
+  text-align: center;
+  color: #515052;
+}
+
+#clockValue {
+  font-size: 110px;
+  padding: 40px 0 10px 0;
+}
+
+#clock-start,
+#clock-pause,
+#clock-stop,
+#clock-reset {
+  height: 25px;
+  width: 60px;
+  margin: 0 2px;
+  font-size: 13px;
 }
 
 .text {
