@@ -6,7 +6,7 @@
 - [ ] User can edit task
 - [ ] Fix scrolling Problem
 - [ ] User can start/pause, stop and reset clock
-- [ ] User can customise break/session timing
+- [x] User can customise break/session timing
       <br>
 
 - [ ] Alarm rings after session/break is over
