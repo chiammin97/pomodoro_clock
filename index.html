@@ -66,7 +66,6 @@
           </div>
           <div id="clock-actions">
             <button id="clock-start">Start</button>
-            <button id="clock-pause">Pause</button>
             <button id="clock-stop">Stop</button>
             <button id="clock-reset">Reset</button>
           </div>
@@ -81,7 +80,7 @@
       <div id="taskList">
         <ul id="list">
           <li class="item">
-            <p class="text" contenteditable="true">
+            <p id="text" class="text">
               Uncompleted Pomodoro Clock
             </p>
             <div id="taskListBtn">
@@ -98,7 +97,7 @@
           </li>
 
           <li class="item-done">
-            <p class="text-done">Completed Pomodoro Clock</p>
+            <p id="text-done" class="text done">Completed Pomodoro Clock</p>
             <div id="taskListBtn">
               <span id="button-tick" class="material-icons tick-style"
                 >check_circle</span

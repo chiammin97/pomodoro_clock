@@ -134,7 +134,6 @@ body {
 }
 
 #clock-start,
-#clock-pause,
 #clock-stop,
 #clock-reset {
   height: 25px;
@@ -176,12 +175,7 @@ body {
 
 /* is there a shorter way of doing this? */
 
-.text-done {
-  font-size: 18px;
-  color: #515052;
-  display: inline-block;
-  opacity: 0.7;
-  padding: 10px 0;
+.done {
   text-decoration: line-through;
 }
 
