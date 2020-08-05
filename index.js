@@ -1,19 +1,19 @@
 //Select Elements
 const $list = document.getElementById("list");
 const $inputTask = document.getElementById("inputTask");
-const $form = document.getElementById("form");
-const $submit = document.getElementById("submit");
+// const $form = document.getElementById("form");
+const $submitBtn = document.getElementById("submit");
 const $alert = document.getElementById("alert");
 
 //To Do List
 
-const list = []; //state of the todo list 
+const lists = []; //state of the todo list
 
 let id = 1;
 
 function renderList(li) {
   const li = document.createElement("li");
-  list.id = $list.id;
+  lists.id = $list.id;
   li.innerHTML = `
     <p id="text" class="text">${task}</p>
     <div id="taskListBtn">
@@ -24,86 +24,41 @@ function renderList(li) {
     `;
 
   $list.appendChild(li);
+
+  const $tickBtn = document.getElementById(`button-tick-${id}`);
+  $tickBtn.addEventListener(
+    "click",
+    function () {
+      const item = lists.find((item) => item.id === lists.id);
+
+      // if item.done is true, it becomes false. Toggles the state.
+      item.done = !item.done;
+      item.done ? $list.classList.add("done") : $list.classList.remove("done");
+    },
+    false
+  );
 }
 
-const $tickBtn = document.getElementById(`button-tick-${id}`);
-$tickBtn.addEventListener("click", function() {
-  const item = list.find(item => item.id === list.id);  
-}
-}
+$submitBtn.addEventListener("click", function () {
+  const task = $inputTask.value;
 
-// function loadEventListeners() {
-//   $form.addEventListener("submit", addToDo);
-// }
+  //Create new list
+  const list = {
+    id,
+    task,
+  };
 
-// loadEventListeners();
+  //Add to existing task
+  lists.push(list);
 
-// let id = 1;
+  //Clear task in input
+  $inputTask.value = "";
 
-// function addToDo(e) {
-//   e.preventDefault();
+  //increment id so that each id is unique
+  id++;
 
-//   const task = $inputTask.value;
-
-//   if (task === "") {
-//     showAlert();
-//     return false;
-//   } else {
-//     const li = document.createElement("li"); //creates list
-
-//     li.classList.add("item");
-//     li.innerHTML = `
-//     <p id="text" class="text">${task}</p>
-//     <div id="taskListBtn">
-//       <span id="button-tick-${id}" class="material-icons tick-style">check_circle</span>
-//       <span id="button-edit-${id}" class="material-icons edit-style">edit</span>
-//       <span id="button-remove-${id}" class="material-icons remove-style">delete</span>
-//     </div>
-//     `;
-
-//     $list.appendChild(li);
-//     $inputTask.value = "";
-
-//     //Done Button
-//     const $tickBtn = document.getElementById(`button-tick-${id}`);
-//     $tickBtn.addEventListener("click", toggle);
-
-//     function toggle() {
-//       let changeClassOfLi = li;
-//       changeClassOfLi.classList.toggle("item-done");
-
-//       let changeClassOfText = document.getElementById("text");
-//       changeClassOfText.classList.toggle("text-done");
-
-//       console.log(li);
-//     }
-
-//     // const $tickBtn = document.getElementById(`button-tick-${id}`);
-//     // $tickBtn.addEventListener("click", function Done() {
-//     //   li.classList.add("item-done");
-//     //   li.innerHTML = `
-//     //   <p class="text-done">${text}</p>
-//     //   <div id="taskListBtn">
-//     //     <span id="button-tick-${id}" class="material-icons tick-style">check_circle</span>
-//     //     <span id="button-edit-${id}" class="material-icons" edit-style>edit</span>
-//     //     <span id="button-remove-${id}" class="material-icons remove-style">delete</span>
-//     //   </div>
-//     //   `;
-//     //   $tickBtn.removeEventListener("click", Done);
-//     // });
-
-//     // //Un-Done Button
-//     // $tickBtn.addEventListener("click", function Undone() {
-//     //   li.classList.add("item");
-//     //   li.innerHTML = `
-//     //   <p class="text-done">${text}</p>
-//     //   <div id="taskListBtn">
-//     //     <span id="button-tick-${id}" class="material-icons tick-style">check_circle</span>
-//     //     <span id="button-edit-${id}" class="material-icons" edit-style>edit</span>
-//     //     <span id="button-remove-${id}" class="material-icons remove-style">delete</span>
-//     //   </div>
-//     //   `;
-//     // });
+  renderList(list);
+});
 
 //     //Edit Button
 
