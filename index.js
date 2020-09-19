@@ -1,9 +1,8 @@
 //Select Elements
-const $list = document.getElementById("list");
-const $inputTask = document.getElementById("inputTask");
-// const $form = document.getElementById("form");
-const $submitBtn = document.getElementById("submit");
-const $alert = document.getElementById("alert");
+const $list = document.getElementById('list');
+const $inputTask = document.getElementById('inputTask');
+const $submitBtn = document.getElementById('submit');
+const $alert = document.getElementById('alert');
 
 //To Do List
 
@@ -12,9 +11,9 @@ const lists = []; //state of the todo list
 let id = 1;
 
 function renderList(li) {
-  const li = document.createElement("li");
-  lists.id = $list.id;
-  li.innerHTML = `
+	const $list = document.createElement('li');
+	lists.id = $list.id;
+	li.innerHTML = `
     <p id="text" class="text">${task}</p>
     <div id="taskListBtn">
       <span id="button-tick-${id}" class="material-icons tick-style">check_circle</span>
@@ -23,41 +22,41 @@ function renderList(li) {
     </div>
     `;
 
-  $list.appendChild(li);
+	$list.appendChild(li);
 
-  const $tickBtn = document.getElementById(`button-tick-${id}`);
-  $tickBtn.addEventListener(
-    "click",
-    function () {
-      const item = lists.find((item) => item.id === lists.id);
+	const $tickBtn = document.getElementById(`button-tick-${id}`);
+	$tickBtn.addEventListener(
+		'click',
+		function() {
+			const item = lists.find((item) => item.id === lists.id);
 
-      // if item.done is true, it becomes false. Toggles the state.
-      item.done = !item.done;
-      item.done ? $list.classList.add("done") : $list.classList.remove("done");
-    },
-    false
-  );
+			// if item.done is true, it becomes false. Toggles the state.
+			item.done = !item.done;
+			item.done ? $list.classList.add('done') : $list.classList.remove('done');
+		},
+		false
+	);
 }
 
-$submitBtn.addEventListener("click", function () {
-  const task = $inputTask.value;
+$submitBtn.addEventListener('click', function() {
+	const task = $inputTask.value;
 
-  //Create new list
-  const list = {
-    id,
-    task,
-  };
+	//Create new list
+	const list = {
+		id,
+		task
+	};
 
-  //Add to existing task
-  lists.push(list);
+	//Add to existing task
+	lists.push(list);
 
-  //Clear task in input
-  $inputTask.value = "";
+	//Clear task in input
+	$inputTask.value = '';
 
-  //increment id so that each id is unique
-  id++;
+	//increment id so that each id is unique
+	id++;
 
-  renderList(list);
+	renderList(list);
 });
 
 //     //Edit Button
@@ -77,58 +76,69 @@ $submitBtn.addEventListener("click", function () {
 
 // Error Alert
 function showAlert() {
-  $alert.style.visibility = "visible";
-  setTimeout(() => {
-    $alert.style.visibility = "hidden";
-  }, 2000);
+	$alert.style.visibility = 'visible';
+	setTimeout(() => {
+		$alert.style.visibility = 'hidden';
+	}, 2000);
 }
 
 //Clock Settings
-const $sessionMinus = document.getElementById("sessionMinus");
-const $sessionPlus = document.getElementById("sessionPlus");
-const $sessionTime = document.getElementById("sessionTime");
-const $breakMinus = document.getElementById("breakMinus");
-const $breakPlus = document.getElementById("breakPlus");
-const $breakTime = document.getElementById("breakTime");
+const $sessionMinus = document.getElementById('sessionMinus');
+const $sessionPlus = document.getElementById('sessionPlus');
+const $sessionTime = document.getElementById('sessionTime');
+const $breakMinus = document.getElementById('breakMinus');
+const $breakPlus = document.getElementById('breakPlus');
+const $breakTime = document.getElementById('breakTime');
 
 //Clock Time
-const $min = document.getElementById("minutes");
-const $sec = document.getElementById("seconds");
+const $min = document.getElementById('minutes');
+const $sec = document.getElementById('seconds');
 
 //Clock Buttons
-const $clockStart = document.getElementById("clock-start");
-const $clockPause = document.getElementById("clock-pause");
-const $clockStop = document.getElementById("clock-stop");
-const $clockReset = document.getElementById("clock-reset");
+const $clockStart = document.getElementById('clock-start');
+const $clockPause = document.getElementById('clock-pause');
+const $clockStop = document.getElementById('clock-stop');
+const $clockReset = document.getElementById('clock-reset');
 
-decreaseSession = 60;
-$sessionMinus.onclick = function (e) {
-  if (decreaseSession > 15) {
-    decreaseSession -= 5;
-    $sessionTime.innerHTML = decreaseSession;
-  }
-};
+var sessionTime = parseInt($sessionTime.innerHTML);
+var breakTime = parseInt($breakTime.innerHTML);
 
-increaseSession = 0;
-$sessionPlus.onclick = function (e) {
-  if (increaseSession < 60) {
-    increaseSession += 5;
-    $sessionTime.innerHTML = increaseSession;
-  }
-};
+$sessionPlus.addEventListener('click', increaseSessionTime);
+$sessionMinus.addEventListener('click', decreaseSessionTime);
 
-decreaseBreak = 0;
-$breakMinus.onclick = function (e) {
-  if (decreaseBreak > 0) {
-    decreaseBreak -= 5;
-    $breakTime.innerHTML = decreaseBreak;
-  }
-};
+$breakPlus.addEventListener('click', increaseBreakTime);
+$breakMinus.addEventListener('click', decreaseBreakTime);
 
-increaseBreak = 0;
-$breakPlus.onclick = function (e) {
-  if (increaseBreak < 30) {
-    increaseBreak += 5;
-    $breakTime.innerHTML = increaseBreak;
-  }
-};
+function increaseSessionTime() {
+	var newTime = (sessionTime += 5);
+	if (newTime > 0 && newTime <= 60) {
+		$sessionTime.innerHTML = newTime;
+		console.log(newTime);
+	}
+	return false;
+}
+
+function decreaseSessionTime() {
+	var newTime = (sessionTime -= 5);
+	if (newTime >= 0 && newTime < 60) {
+		$sessionTime.innerHTML = newTime;
+		console.log(newTime);
+	}
+	return false;
+}
+
+function increaseBreakTime() {
+	var newTime = (breakTime += 5);
+	if (newTime > 0 && newTime <= 30) {
+		$breakTime.innerHTML = newTime;
+	}
+	return false;
+}
+
+function decreaseBreakTime() {
+	var newTime = (breakTime -= 5);
+	if (newTime >= 0 && newTime < 30) {
+		$breakTime.innerHTML = newTime;
+	}
+	return false;
+}
