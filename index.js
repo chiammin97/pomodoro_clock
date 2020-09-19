@@ -90,16 +90,6 @@ const $breakMinus = document.getElementById('breakMinus');
 const $breakPlus = document.getElementById('breakPlus');
 const $breakTime = document.getElementById('breakTime');
 
-//Clock Time
-const $min = document.getElementById('minutes');
-const $sec = document.getElementById('seconds');
-
-//Clock Buttons
-const $clockStart = document.getElementById('clock-start');
-const $clockPause = document.getElementById('clock-pause');
-const $clockStop = document.getElementById('clock-stop');
-const $clockReset = document.getElementById('clock-reset');
-
 var sessionTime = parseInt($sessionTime.innerHTML);
 var breakTime = parseInt($breakTime.innerHTML);
 
@@ -113,7 +103,6 @@ function increaseSessionTime() {
 	var newTime = (sessionTime += 5);
 	if (newTime > 0 && newTime <= 60) {
 		$sessionTime.innerHTML = newTime;
-		console.log(newTime);
 	}
 	return false;
 }
@@ -122,7 +111,6 @@ function decreaseSessionTime() {
 	var newTime = (sessionTime -= 5);
 	if (newTime >= 0 && newTime < 60) {
 		$sessionTime.innerHTML = newTime;
-		console.log(newTime);
 	}
 	return false;
 }
@@ -141,4 +129,68 @@ function decreaseBreakTime() {
 		$breakTime.innerHTML = newTime;
 	}
 	return false;
+}
+
+//Clock Time
+const $min = document.getElementById('minutes');
+const $sec = document.getElementById('seconds');
+
+//Clock Buttons
+const $clockStart = document.getElementById('clock-start');
+const $clockStop = document.getElementById('clock-stop');
+const $clockReset = document.getElementById('clock-reset');
+
+//Toggle Start Pause Button
+var startPause = true;
+$clockStart.addEventListener('click', toggleStartPauseButton);
+function toggleStartPauseButton() {
+	startPause = !startPause;
+	startPause ? ($clockStart.innerHTML = 'Start') : ($clockStart.innerHTML = 'Pause');
+}
+
+// $clockStart.addEventListener('click', toggleClock);
+// $clockStop.addEventListener('click', toggleClock(true));
+// $clockReset.addEventListener('click', toggleClock());
+
+// in seconds = 25 mins
+let sessionDuration = 70;
+let timeLeftInSession = 70;
+
+// in seconds = 5 mins;
+let breakDuration = 300;
+
+let isClockRunning = false;
+function toggleClock(reset) {
+	if (reset) {
+		// STOP THE TIMER
+	} else {
+		if (isClockRunning === true) {
+			// PAUSE THE TIMER
+			isClockRunning = false;
+			clearInterval(clockTimer);
+		} else {
+			// START THE TIMER
+			isClockRunning = true;
+		}
+	}
+}
+
+const clockTimer = setInterval(() => {
+	timeLeftInSession--;
+	displayTimeLeftInSession();
+}, 1000);
+
+function displayTimeLeftInSession() {
+	const secondsLeft = timeLeftInSession;
+	const seconds = secondsLeft % 60;
+	const minutes = parseInt(secondsLeft / 60);
+	$sec.innerHTML = seconds;
+	$min.innerHTML = minutes;
+	//ADD ZERO IF LESS THAN 10
+	if (seconds < 10) {
+		$sec.innerHTML = `0${seconds}`;
+	}
+	if (minutes < 10) {
+		$min.innerHTML = `0${minutes}`;
+	}
 }
