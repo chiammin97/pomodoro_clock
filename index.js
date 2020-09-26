@@ -7,56 +7,43 @@ const $alert = document.getElementById('alert');
 //To Do List
 
 const lists = []; //state of the todo list
-
 let id = 1;
 
-function renderList(li) {
-	const $list = document.createElement('li');
-	lists.id = $list.id;
-	li.innerHTML = `
-    <p id="text" class="text">${task}</p>
+function renderToDo(toDoItem) {
+	const list = document.createElement('li');
+	list.id = toDoItem.id;
+	list.innerHTML = `
+    <p id="text" class="text">${toDoItem.task}</p>
     <div id="taskListBtn">
-      <span id="button-tick-${id}" class="material-icons tick-style">check_circle</span>
-      <span id="button-edit-${id}" class="material-icons edit-style">edit</span>
-      <span id="button-remove-${id}" class="material-icons remove-style">delete</span>
+      <span id="button-tick-${toDoItem.id}" class="material-icons tick-style">check_circle</span>
+      <span id="button-edit-${toDoItem.id}" class="material-icons edit-style">edit</span>
+      <span id="button-remove-${toDoItem.id}" class="material-icons remove-style">delete</span>
     </div>
-    `;
+	`;
+	list.classList.add('item');
+	$list.appendChild(list);
 
-	$list.appendChild(li);
-
-	const $tickBtn = document.getElementById(`button-tick-${id}`);
-	$tickBtn.addEventListener(
-		'click',
-		function() {
-			const item = lists.find((item) => item.id === lists.id);
-
-			// if item.done is true, it becomes false. Toggles the state.
-			item.done = !item.done;
-			item.done ? $list.classList.add('done') : $list.classList.remove('done');
-		},
-		false
-	);
+	// const $tickBtn = document.getElementById(`button-tick-${id}`);
+	// var toggleDone = true;
+	// $tickBtn.addEventListener('click', function() {
+	// 	toogleDone = !toggleDone;
+	// 	toggleDone ? list.classList.add('done') : list.classList.remove('done');
+	// });
 }
 
-$submitBtn.addEventListener('click', function() {
+$submitBtn.addEventListener('click', function(e) {
+	e.preventDefault();
+	//UPDATE STATE OF LISTS
 	const task = $inputTask.value;
-
-	//Create new list
-	const list = {
+	const todo = {
 		id,
 		task
 	};
-
-	//Add to existing task
-	lists.push(list);
-
-	//Clear task in input
+	lists.push(todo);
 	$inputTask.value = '';
-
-	//increment id so that each id is unique
+	renderToDo(todo);
+	console.log(todo);
 	id++;
-
-	renderList(list);
 });
 
 //     //Edit Button
@@ -148,37 +135,16 @@ function toggleStartPauseButton() {
 	startPause ? ($clockStart.innerHTML = 'Start') : ($clockStart.innerHTML = 'Pause');
 }
 
-// $clockStart.addEventListener('click', toggleClock);
+$clockStart.addEventListener('click', startPauseTimer);
 // $clockStop.addEventListener('click', toggleClock(true));
 // $clockReset.addEventListener('click', toggleClock());
 
 // in seconds = 25 mins
-let sessionDuration = 70;
-let timeLeftInSession = 70;
+let sessionDuration = 1500;
+let timeLeftInSession = 1500;
 
 // in seconds = 5 mins;
 let breakDuration = 300;
-
-let isClockRunning = false;
-function toggleClock(reset) {
-	if (reset) {
-		// STOP THE TIMER
-	} else {
-		if (isClockRunning === true) {
-			// PAUSE THE TIMER
-			isClockRunning = false;
-			clearInterval(clockTimer);
-		} else {
-			// START THE TIMER
-			isClockRunning = true;
-		}
-	}
-}
-
-const clockTimer = setInterval(() => {
-	timeLeftInSession--;
-	displayTimeLeftInSession();
-}, 1000);
 
 function displayTimeLeftInSession() {
 	const secondsLeft = timeLeftInSession;
@@ -192,5 +158,18 @@ function displayTimeLeftInSession() {
 	}
 	if (minutes < 10) {
 		$min.innerHTML = `0${minutes}`;
+	}
+}
+
+function startPauseTimer() {
+	let isClockRunning = true;
+	if (isClockRunning) {
+		const timer = setInterval(() => {
+			timeLeftInSession--;
+			displayTimeLeftInSession();
+		}, 1000);
+	} else {
+		console.log('click');
+		clearInterval();
 	}
 }
