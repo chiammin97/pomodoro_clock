@@ -9,5 +9,5 @@
 - [x] User can customise break/session timing
       <br>
 
-- [ ] Alarm rings after session/break is over
+- [x] Alarm rings after session/break is over
 - [ ] Include indication after task is added
