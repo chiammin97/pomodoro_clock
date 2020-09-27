@@ -1,101 +1,101 @@
 body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serifs;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serifs;
 }
 
 #header,
 #form {
-  text-align: center;
+	text-align: center;
 }
 
 .header-header-text {
-  font-size: 60px;
-  padding: 35px 0px 10px 0;
-  color: #515052;
+	font-size: 60px;
+	padding: 35px 0px 10px 0;
+	color: #515052;
 }
 
 .header-text {
-  font-size: 18px;
-  padding-bottom: 20px;
-  color: #515052;
-  font-style: italic;
-  opacity: 0.7;
+	font-size: 18px;
+	padding-bottom: 20px;
+	color: #515052;
+	font-style: italic;
+	opacity: 0.7;
 }
 
 #alert {
-  height: 35px;
-  width: 550px;
-  margin: auto;
-  background-color: rgb(238, 124, 124);
-  margin-bottom: 13px;
-  font-size: 15px;
-  vertical-align: middle;
-  padding-left: 10px;
-  border-radius: 0.1em;
-  line-height: 35px;
-  color: #fff;
-  visibility: hidden;
+	height: 35px;
+	width: 550px;
+	margin: auto;
+	background-color: rgb(238, 124, 124);
+	margin-bottom: 13px;
+	font-size: 15px;
+	vertical-align: middle;
+	padding-left: 10px;
+	border-radius: 0.1em;
+	line-height: 35px;
+	color: #fff;
+	visibility: hidden;
 }
 
 .task-description {
-  height: 35px;
-  width: 500px;
-  font-size: 15px;
-  padding-left: 10px;
-  margin-bottom: 30px;
+	height: 35px;
+	width: 500px;
+	font-size: 15px;
+	padding-left: 10px;
+	margin-bottom: 30px;
 }
 
 .task-description::placeholder {
-  opacity: 0.6;
+	opacity: 0.6;
 }
 
 #submit {
-  font-size: 15px;
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  background-color: #94db8a;
-  color: #fff;
-  cursor: pointer;
-  border: none;
+	font-size: 15px;
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+	background-color: #94db8a;
+	color: #fff;
+	cursor: pointer;
+	border: none;
 }
 
 #submit:hover {
-  background-color: #a0e996;
-  transition: 0.3s;
+	background-color: #a0e996;
+	transition: 0.3s;
 }
 
 #clock-container {
-  height: 300px;
-  width: 550px;
-  background-color: #f7f0ea;
-  margin: auto;
-  border-radius: 0.5em;
+	height: 300px;
+	width: 550px;
+	background-color: #f7f0ea;
+	margin: auto;
+	border-radius: 0.5em;
 }
 
 #clock-padding {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 #settings {
-  display: flex;
-  justify-content: center;
-  color: #515052;
-  font-size: 20px;
+	display: flex;
+	justify-content: center;
+	color: #515052;
+	font-size: 20px;
 }
 
 #session,
 #break {
-  display: inline-block;
-  text-align: center;
-  padding: 0 30px;
+	display: inline-block;
+	text-align: center;
+	padding: 0 30px;
 }
 
 #sessionContent,
 #breakContent {
-  display: block;
+	display: block;
 }
 
 #sessionMinus,
@@ -104,98 +104,99 @@ body {
 #breakMinus,
 #breakTime,
 #breakPlus {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 0 10px;
+	display: inline-block;
+	margin-top: 10px;
+	padding: 0 10px;
 }
 
 #sessionMinus,
 #sessionPlus,
 #breakMinus,
 #breakPlus {
-  width: 25px;
-  height: 25px;
-  padding: 2px;
+	width: 25px;
+	height: 25px;
+	padding: 2px;
 }
 
 #sessionText,
 #breakText {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 #clockTimer {
-  text-align: center;
-  color: #515052;
+	text-align: center;
+	color: #515052;
 }
 
 #clockValue {
-  font-size: 110px;
-  padding: 40px 0 10px 0;
+	font-size: 110px;
+	padding: 40px 0 10px 0;
 }
 
 #clock-start,
 #clock-stop,
 #clock-reset {
-  height: 25px;
-  width: 60px;
-  margin: 0 2px;
-  font-size: 13px;
+	height: 25px;
+	width: 60px;
+	margin: 0 2px;
+	font-size: 13px;
 }
 
 #taskList-container {
-  width: 550px;
-  margin: 50px auto;
+	width: 550px;
+	margin: 50px auto;
 }
 
 #taskList-header {
-  font-size: 25px;
-  font-style: italic;
-  margin-bottom: 10px;
-  color: #515052;
+	font-size: 25px;
+	font-style: italic;
+	margin-bottom: 10px;
+	color: #515052;
 }
 
 .item,
 .item-done {
-  border-bottom: 0.2px solid #515052;
-  font-size: 18px;
-  color: #515052;
-  opacity: 0.7;
-  padding: 10px 0;
-  display: block;
-  height: 30px;
+	border-bottom: 0.2px solid #515052;
+	font-size: 18px;
+	color: #515052;
+	opacity: 0.7;
+	padding: 10px 0;
+	display: block;
+	height: 30px;
 }
 
 .text {
-  font-size: 18px;
-  color: #515052;
-  display: inline-block;
-  opacity: 0.7;
-  padding: 10px 0;
+	font-size: 18px;
+	color: #515052;
+	display: inline-block;
+	opacity: 0.7;
+	padding: 10px 0;
 }
 
 /* is there a shorter way of doing this? */
 
 .done {
-  text-decoration: line-through;
+	text-decoration: line-through;
 }
 
-#taskListBtn {
-  display: inline-block;
-  float: right;
-  padding: 5px 0;
+.tasklist-Btn {
+	display: inline-block;
+	float: right;
+	padding: 5px;
 }
 
 .tick-style,
 .edit-style,
 .remove-style {
-  cursor: pointer;
+	cursor: pointer;
+	padding-left: 10px;
 }
 
 .tick-style {
-  color: #208612;
+	color: #208612;
 }
 
 input,
 button:focus {
-  outline: none;
+	outline: none;
 }

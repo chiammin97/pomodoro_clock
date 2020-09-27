@@ -5,61 +5,109 @@ const $submitBtn = document.getElementById('submit');
 const $alert = document.getElementById('alert');
 
 //To Do List
+const newEl = (sel, attr) => Object.assign(document.createElement(sel), attr || {});
+const el = (sel, el) => (el || document).querySelector(sel);
 
-const lists = []; //state of the todo list
-let id = 1;
+const createNewTask = (toDoItem) => {
+	const List = el('#list');
 
-function renderToDo(toDoItem) {
-	const list = document.createElement('li');
-	list.id = toDoItem.id;
-	list.innerHTML = `
-    <p id="text" class="text">${toDoItem.task}</p>
-    <div id="taskListBtn">
-      <span id="button-tick-${toDoItem.id}" class="material-icons tick-style">check_circle</span>
-      <span id="button-edit-${toDoItem.id}" class="material-icons edit-style">edit</span>
-      <span id="button-remove-${toDoItem.id}" class="material-icons remove-style">delete</span>
-    </div>
-	`;
-	list.classList.add('item');
-	$list.appendChild(list);
+	const Task = newEl('LI', {
+		className: 'item'
+	});
 
-	// const $tickBtn = document.getElementById(`button-tick-${id}`);
-	// var toggleDone = true;
-	// $tickBtn.addEventListener('click', function() {
-	// 	toogleDone = !toggleDone;
-	// 	toggleDone ? list.classList.add('done') : list.classList.remove('done');
-	// });
-}
+	const Div = newEl('DIV', {
+		className: 'tasklist-Btn'
+	});
+
+	const Text = newEl('P', {
+		className: 'text',
+		type: 'text',
+		textContent: toDoItem.task
+	});
+
+	const BtnCheck = newEl('SPAN', {
+		className: 'taskListBtn material-icons tick-style',
+		type: 'button',
+		textContent: 'check_circle',
+		onclick: () => Text.classList.toggle('done')
+	});
+
+	const BtnRemove = newEl('SPAN', {
+		className: 'taskListBtn material-icons remove-style',
+		type: 'button',
+		textContent: 'delete',
+		onclick: () => Task.remove()
+	});
+
+	Div.append(BtnCheck, BtnRemove);
+	Task.append(Text, Div);
+	List.append(Task);
+};
+
+const toDos = [];
 
 $submitBtn.addEventListener('click', function(e) {
 	e.preventDefault();
 	//UPDATE STATE OF LISTS
 	const task = $inputTask.value;
+	if (!task) {
+		return showAlert();
+	}
 	const todo = {
-		id,
 		task
 	};
-	lists.push(todo);
+	toDos.push(todo);
 	$inputTask.value = '';
-	renderToDo(todo);
-	console.log(todo);
-	id++;
+	createNewTask(todo);
 });
 
-//     //Edit Button
+// const lists = []; //state of the todo list
+// let id = 1;
 
-//     //Remove Button
-//     const $removeBtn = document.getElementById(`button-remove-${id}`);
-//     $removeBtn.addEventListener("click", function (remove) {
-//       const confirm = window.confirm("Delete Task?");
+// function renderToDo(toDoItem) {
+// 	const list = document.createElement('li');
+// 	const para = document.createElement('p');
+// 	para.innerHTML = `${toDoItem.task}`;
+// 	para.setAttribute('id', 'text');
+// 	para.setAttribute('class', 'text');
+// 	console.log(para);
+// 	// <p id="text" class="text">${toDoItem.task}</p>
+// 	list.id = toDoItem.id;
+// 	list.innerHTML = `
+//     <div id="taskListBtn">
+//       <span id="button-tick-${toDoItem.id}" class="material-icons tick-style">check_circle</span>
+//       <span id="button-edit-${toDoItem.id}" class="material-icons edit-style">edit</span>
+//       <span id="button-remove-${toDoItem.id}" class="material-icons remove-style">delete</span>
+//     </div>
+// 	`;
+// 	list.appendChild(para);
+// 	list.classList.add('item');
+// 	$list.appendChild(list);
 
-//       if (confirm) {
-//         li.remove();
-//       }
-//     });
-//   }
-//   id++;
+// 	const $tickBtn = document.getElementById(`button-tick-${toDoItem.id}`);
+// 	$tickBtn.addEventListener('click', function() {
+// 		console.log('click');
+// 		toDoItem.done = !toDoItem.done;
+// 		toDoItem.done ? list.classList.add('done') : list.classList.remove('done');
+// 	});
 // }
+
+// $submitBtn.addEventListener('click', function(e) {
+// 	e.preventDefault();
+// 	//UPDATE STATE OF LISTS
+// 	const task = $inputTask.value;
+// 	if (!task) {
+// 		return showAlert();
+// 	}
+// 	const todo = {
+// 		id,
+// 		task
+// 	};
+// 	lists.push(todo);
+// 	$inputTask.value = '';
+// 	renderToDo(todo);
+// 	id++;
+// });
 
 // Error Alert
 function showAlert() {
